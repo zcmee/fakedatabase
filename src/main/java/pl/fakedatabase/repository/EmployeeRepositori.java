@@ -6,7 +6,7 @@ package pl.fakedatabase.repository;
 public class EmployeeRepositori implements FakeRespository {
 
     public String cyce() {
-        return "Jackob";
+        return "Jackob bLACK";
     }
 
 }
