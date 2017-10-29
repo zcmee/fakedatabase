@@ -24,7 +24,8 @@ public class EmployeeRepository implements FakeRespository {
     public Employee find(Integer id) {
         return employees.stream()
                         .filter(v -> v.getId() == id)
-                        .findFirst().get();
+                        .findFirst()
+                        .get();
     }
 
     @Override
