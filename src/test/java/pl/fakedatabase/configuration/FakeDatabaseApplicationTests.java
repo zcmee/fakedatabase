@@ -1,4 +1,4 @@
-package pl.fakedatabease.configuration;
+package pl.fakedatabase.configuration;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
