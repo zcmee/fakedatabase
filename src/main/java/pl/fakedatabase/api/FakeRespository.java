@@ -7,6 +7,7 @@ import java.util.List;
  */
 public interface FakeRespository<T> {
     T find(Integer id);
+    List<T> find(String id);
     List<T> findAll();
 }
 

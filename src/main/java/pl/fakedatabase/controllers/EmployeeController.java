@@ -1,10 +1,7 @@
-package pl.fakedatabase.configuration;
+package pl.fakedatabase.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.fakedatabase.api.FakeRespository;
 import pl.fakedatabase.entities.Employee;
 
@@ -15,16 +12,25 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("employees")
+@RequestMapping("employee")
 public class EmployeeController {
 
     @Autowired
-    FakeRespository employeeRespository;
-
+    private FakeRespository<Employee> employeeRespository;
 
     @GetMapping("all")
     public List<Employee> getAllEmployees() {
         return employeeRespository.findAll();
+    }
+
+    @GetMapping("/{id:[0-9]+}")
+    public Employee getEmployee(@PathVariable Integer id) {
+        return employeeRespository.find(id);
+    }
+
+    @GetMapping("/{id:[a-zA-Z]+}")
+    public List<Employee> getEmployee(@PathVariable String id) {
+        return employeeRespository.find(id);
     }
 
     @RequestMapping(value = "notyfication", method = RequestMethod.GET)
