@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.fakedatabase.api.FakeRespository;
 import pl.fakedatabase.entities.Employee;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -23,14 +24,19 @@ public class EmployeeController {
         return employeeRespository.findAll();
     }
 
-    @GetMapping("/{id:[0-9]+}")
+    @GetMapping("id/{id:[0-9]+}")
     public Employee getEmployee(@PathVariable Integer id) {
         return employeeRespository.find(id);
     }
 
-    @GetMapping("/{id:[a-zA-Z]+}")
+    @GetMapping("id/{id:[a-zA-Z]+}")
     public List<Employee> getEmployee(@PathVariable String id) {
         return employeeRespository.find(id);
+    }
+
+    @GetMapping("/parametryzacja")
+    public String getPamateres(@RequestParam String firstName, @RequestParam(name = "ostname")  String lastName, BigDecimal salary ) {
+        return firstName + " aka " + lastName + " i zarabiasz: " + salary;
     }
 
     @RequestMapping(value = "notyfication", method = RequestMethod.GET)
