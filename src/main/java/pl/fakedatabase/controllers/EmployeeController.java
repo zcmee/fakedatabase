@@ -3,6 +3,7 @@ package pl.fakedatabase.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pl.fakedatabase.api.FakeRespository;
+import pl.fakedatabase.domain.Shit;
 import pl.fakedatabase.entities.Employee;
 
 import java.math.BigDecimal;
@@ -33,6 +34,19 @@ public class EmployeeController {
     public List<Employee> getEmployee(@PathVariable String id) {
         return employeeRespository.find(id);
     }
+
+    @PostMapping("showshit/{yaku}")
+    public String showshit(@RequestBody Shit shits, @PathVariable("yaku") Integer yakuzza){
+        System.out.println(shits);
+        return "Yondaime Hokage";
+    }
+
+//Example sended Object:
+//    {
+//        "name": "Bill",
+//            "day": 5
+//    }
+
 
     @GetMapping("/parametryzacja")
     public String getPamateres(@RequestParam String firstName, @RequestParam(name = "ostname")  String lastName, BigDecimal salary ) {
