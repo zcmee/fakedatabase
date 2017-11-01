@@ -15,12 +15,12 @@ public class EmployeesGenerator implements Generator<Employee> {
     @Override
     public List<Employee> generate() {
         ArrayList<Employee> employess = new ArrayList<>(10);
-            employess.add(new Employee(1, "Adam", 124.23));
+            employess.add(new Employee(1, "Wojtyła", 124.23));
             employess.add(new Employee(2, "Yoyne", 897.11));
-            employess.add(new Employee(3, "Zimmermann", 24.23));
-            employess.add(new Employee(4, "Adam", 12.99));
+            employess.add(new Employee(3, "ZimmermannY", 24.23));
+            employess.add(new Employee(4, "Krzysztof", 12.99));
             employess.add(new Employee(5, "Adam", 11.34));
-            employess.add(new Employee(6, "Zimmermann", 123d));
+            employess.add(new Employee(6, "ZimmermannP", 123d));
 
         return employess;
     }

@@ -1,6 +1,7 @@
 package pl.fakedatabase.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import pl.fakedatabase.api.FakeRespository;
 import pl.fakedatabase.domain.Shit;
@@ -20,7 +21,7 @@ public class EmployeeController {
     @Autowired
     private FakeRespository<Employee> employeeRespository;
 
-    @GetMapping("all")
+    @GetMapping(value = "all", produces = MediaType.APPLICATION_XML_VALUE)
     public List<Employee> getAllEmployees() {
         return employeeRespository.findAll();
     }
