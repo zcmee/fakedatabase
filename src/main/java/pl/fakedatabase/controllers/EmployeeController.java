@@ -1,7 +1,10 @@
 package pl.fakedatabase.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import pl.fakedatabase.api.FakeRespository;
@@ -70,7 +73,14 @@ public class EmployeeController {
         return "WPIERDALASZ GOWNO";
     }
 
-    
+    @GetMapping("password")
+    public HttpEntity<String> getSecret(@RequestParam Integer password) {
+        if(password.equals(666)) {
+            return ResponseEntity.ok("Dobre hasło kurwo babilońska");
+        } else {
+            return ResponseEntity.status(HttpStatus.GONE).body("Ty kurwa macedońska WYPIERDALAJ!!!");
+        }
+    }
 
     @RequestMapping(value = "notyfication", method = RequestMethod.GET)
     public String all() {
