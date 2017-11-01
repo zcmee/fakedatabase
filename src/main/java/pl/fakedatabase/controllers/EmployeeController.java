@@ -2,6 +2,7 @@ package pl.fakedatabase.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import pl.fakedatabase.api.FakeRespository;
 import pl.fakedatabase.domain.Shit;
@@ -9,6 +10,8 @@ import pl.fakedatabase.entities.Employee;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by SkyNET on 2017-10-29.
@@ -53,6 +56,21 @@ public class EmployeeController {
     public String getPamateres(@RequestParam String firstName, @RequestParam(name = "ostname")  String lastName, BigDecimal salary ) {
         return firstName + " aka " + lastName + " i zarabiasz: " + salary;
     }
+
+    @GetMapping("/allheaders")
+    public String getHeaderInfo(
+            @RequestHeader Map<String, String> headerMap,
+            @RequestParam Map<String, String> parameterMap
+    ) {
+        Set<String> keysH =  headerMap.keySet();
+        keysH.stream().map(headerMap::get).forEach(System.out::println);
+        System.out.println("-------------------------------------------");
+        Set<String> keysP =  parameterMap.keySet();
+        keysP.stream().map(parameterMap::get).forEach(System.out::println);
+        return "WPIERDALASZ GOWNO";
+    }
+
+    
 
     @RequestMapping(value = "notyfication", method = RequestMethod.GET)
     public String all() {
